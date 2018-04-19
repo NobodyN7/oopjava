@@ -3,6 +3,8 @@ package iit.uni.miskolc.oop;
 import java.io.BufferedReader;
 import java.util.Scanner;
 
+import iit.uni.miskolc.oop.exception.DivisionByZeroException;
+
 public class Calculator {
 	
 	public static void main(String[] args){
@@ -17,7 +19,14 @@ public class Calculator {
 			firstNumber = Double.parseDouble(calculation.split(" ")[0]);
 			secondNumber = Double.parseDouble(calculation.split(" ")[2]);
 			operator = calculation.split(" ")[1];
-			Util.calculate(operator, firstNumber, secondNumber);
+			try {
+				Util.calculate(operator, firstNumber, secondNumber);
+			} catch (DivisionByZeroException e) {
+				e.printStackTrace();
+			}
+			finally{
+				
+			}
 		}
 	}
 
